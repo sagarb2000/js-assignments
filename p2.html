@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Marksheet for Information Technology</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .marksheet {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 350px;
+        }
+        .marksheet h2 {
+            text-align: center;
+            color: #343a40;
+        }
+        .marksheet h3 {
+            text-align: center;
+            color: #495057;
+            margin-bottom: 20px;
+        }
+        .marksheet label {
+            display: inline-block;
+            width: 150px;
+            color: #495057;
+        }
+        .marksheet input {
+            width: 60px;
+            padding: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+        }
+        .button {
+            width: 100%;
+            height: 40px;
+            font-size: 18px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            text-align: center;
+            color: #495057;
+        }
+        .result span {
+            font-weight: bold;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="marksheet">
+        <h2>Marksheet for Information Technology</h2>
+        <h3>Enter Marks</h3>
+        <label>1. C Language</label>
+        <input type="number" id="cLang" /><br>
+        <label>2. C++ Language</label>
+        <input type="number" id="cppLang" /><br>
+        <label>3. Database</label>
+        <input type="number" id="database" /><br>
+        <label>4. HTML</label>
+        <input type="number" id="html" /><br>
+        <label>5. CSS</label>
+        <input type="number" id="css" /><br>
+        <label>6. PHP</label>
+        <input type="number" id="php" /><br>
+        <label>7. Core Java</label>
+        <input type="number" id="java" /><br>
+        <button class="button" onclick="calculateResult()">Result</button>
+        <div class="result">
+            <p>Total is: <span id="total"></span> / 350</p>
+            <p>Percentage is: <span id="percentage"></span> %</p>
+        </div>
+    </div>
+
+    <script>
+        function calculateResult() {
+            const cLang = parseInt(document.getElementById('cLang').value) || 0;
+            const cppLang = parseInt(document.getElementById('cppLang').value) || 0;
+            const database = parseInt(document.getElementById('database').value) || 0;
+            const html = parseInt(document.getElementById('html').value) || 0;
+            const css = parseInt(document.getElementById('css').value) || 0;
+            const php = parseInt(document.getElementById('php').value) || 0;
+            const java = parseInt(document.getElementById('java').value) || 0;
+            
+            const total = cLang + cppLang + database + html + css + php + java;
+            const percentage = (total / 350) * 100;
+
+            document.getElementById('total').innerText = total;
+            document.getElementById('percentage').innerText = percentage.toFixed(2);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Password Field with Show/Hide</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        .password-container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .password-container input {
+            width: 50%;
+            /*padding: 10px;
+            margin: 10px 0;*/
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        /* .checkbox input{
+            align-items: left;
+        } */
+
+        
+        /* .password-container button {
+            padding: 10px;
+            border: none;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .password-container button:focus {
+            outline: none;
+        } */
+    </style>
+</head>
+<body>
+    <div class="password-container">
+        <h2 style="text-align: center; font-family: Arial, Helvetica, sans-serif;">Password Field</h2>
+        <label>Enter Password: </label>
+        <input type="password" id="password"><br><br>
+        
+        <input type="checkbox" onclick="togglePassword()" style="align-items: left;">
+        
+        <!--<button onclick="togglePassword()">Show</button>-->
+    </div>
+
+    <script>
+        function togglePassword() {
+            const passwordField = document.getElementById('password');
+            const checkbox = document.querySelector('.password-container checkbox');
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                checkbox.textContent = 'Hide';
+            } else {
+                passwordField.type = 'password';
+                checkbox.textContent = 'Show';
+            }
+        }
+    </script>
+</body>
+</html>

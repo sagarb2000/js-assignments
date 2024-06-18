@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Centered JavaScript Slider</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .slider-container {
+            position: relative;
+            width: 80%;
+            max-width: 800px;
+            overflow: hidden;
+            background-color: #222;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            color: white;
+        }
+        .slider-title {
+            margin-bottom: 20px;
+        }
+        .slider-wrapper {
+            display: flex;
+            justify-content: center;
+            transition: transform 0.3s ease-in-out;
+        }
+        .slider-item {
+            width: 100px;
+            height: 100px;
+            margin: 0 10px;
+            transition: transform 0.3s ease-in-out, width 0.3s ease-in-out, height 0.3s ease-in-out;
+        }
+        .slider-item.active {
+            width: 200px;
+            height: 200px;
+        }
+        .slider-item:nth-child(1) { background-color: #f0db4f; }
+        .slider-item:nth-child(2) { background-color: #e54d26; }
+        .slider-item:nth-child(3) { background-color: #4b6cb7; }
+        .slider-item:nth-child(4) { background-color: #36b55c; }
+        .slider-item:nth-child(5) { background-color: #008cff; }
+        .slider-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .slider-nav button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        .slider-nav button:focus {
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="slider-container">
+        <h2 class="slider-title">Simple JavaScript Slider</h2>
+        <p>Created by Dropinks</p>
+        <div class="slider-wrapper" id="slider">
+            <div class="slider-item"></div>
+            <div class="slider-item"></div>
+            <div class="slider-item"></div>
+            <div class="slider-item"></div>
+            <div class="slider-item"></div>
+        </div>
+        <div class="slider-nav">
+            <button onclick="prevSlide()">&#8592;</button>
+            <button onclick="nextSlide()">&#8594;</button>
+        </div>
+    </div>
+
+    <script>
+        let currentIndex = 2; // Start with the third item centered
+
+        function updateSlider() {
+            const slider = document.getElementById('slider');
+            const items = slider.children;
+            const totalItems = items.length;
+
+            for (let i = 0; i < totalItems; i++) {
+                items[i].classList.remove('active');
+            }
+
+            items[currentIndex].classList.add('active');
+            const offset = (slider.clientWidth / 2) - (items[currentIndex].clientWidth / 2);
+            const translateX = -currentIndex * (items[currentIndex].clientWidth + 20) + offset;
+
+            slider.style.transform = `translateX(${translateX}px)`;
+        }
+
+        function nextSlide() {
+            const slider = document.getElementById('slider');
+            const totalItems = slider.children.length;
+            currentIndex = (currentIndex + 1) % totalItems;
+            updateSlider();
+        }
+
+        function prevSlide() {
+            const slider = document.getElementById('slider');
+            const totalItems = slider.children.length;
+            currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+            updateSlider();
+        }
+
+        window.onload = updateSlider;
+    </script>
+</body>
+</html>

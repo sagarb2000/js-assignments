@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Basic Calculator</title>
+    <style>
+        .calculator {
+            display: inline-block;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .display {
+            margin-bottom: 10px;
+            width: 80%;
+            height: 40px;
+            text-align: right;
+            padding-right: 10px;
+            font-size: 18px;
+        }
+        .button {
+            width: 60px;
+            height: 60px;
+            font-size: 18px;
+            margin: 5px;
+        }
+        .input-field {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <h2>Maths Operations</h2>
+        <div class="input-field">
+            <label>Enter 1st number: </label>
+            <input type="number" id="firstNumber" class="display" />
+        </div>
+        <div class="input-field">
+            <label>Enter 2nd number: </label>
+            <input type="number" id="secondNumber" class="display" />
+        </div>
+        <br>
+        <button class="button" onclick="calculate('+')">+</button>
+        <button class="button" onclick="calculate('-')">-</button>
+        <button class="button" onclick="calculate('*')">*</button>
+        <button class="button" onclick="calculate('/')">/</button>
+        <button class="button" onclick="calculate('%')">%</button>
+        <br>
+        <h3>Answer is: <span id="result"></span></h3>
+    </div>
+
+    <script>
+        function calculate(operation) {
+            const firstNumber = parseFloat(document.getElementById('firstNumber').value);
+            const secondNumber = parseFloat(document.getElementById('secondNumber').value);
+            let result;
+            
+            if (isNaN(firstNumber) || isNaN(secondNumber)) {
+                result = 'Invalid input';
+            } else {
+                switch (operation) {
+                    case '+':
+                        result = firstNumber + secondNumber;
+                        break;
+                    case '-':
+                        result = firstNumber - secondNumber;
+                        break;
+                    case '*':
+                        result = firstNumber * secondNumber;
+                        break;
+                    case '/':
+                        result = firstNumber / secondNumber;
+                        break;
+                    case '%':
+                        result = firstNumber % secondNumber;
+                        break;
+                    default:
+                        result = 'Invalid operation';
+                }
+            }
+
+            document.getElementById('result').innerText = result;
+        }
+    </script>
+</body>
+</html>
